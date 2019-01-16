@@ -23,4 +23,46 @@ public class  Book {
 
     @OneToMany(mappedBy = "book")
     private Set<Borrow> borrows = new HashSet<>();
+
+    public Book() {
+    }
+
+    public Book(Long id, BookData bookData, Set<Borrow> borrows) {
+        this.id = id;
+        this.bookData = bookData;
+        this.borrows = borrows;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public BookData getBookData() {
+        return bookData;
+    }
+
+    public void setBookData(BookData bookData) {
+        this.bookData = bookData;
+    }
+
+    public Set<Borrow> getBorrows() {
+        return borrows;
+    }
+
+    public void setBorrows(Set<Borrow> borrows) {
+        this.borrows = borrows;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", bookData=" + bookData +
+                ", borrows=" + borrows +
+                '}';
+    }
 }

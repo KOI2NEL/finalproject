@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "author")
+@Table(name = "authors")
 public class Author {
 
     @Id
@@ -24,4 +24,55 @@ public class Author {
     @ManyToMany(mappedBy = "authors")
     private Set<BookData> bookDatas = new HashSet<>();
 
+    public Author() {
+    }
+
+    public Author(Long id, String name, String authorSurname, Set<BookData> bookDatas) {
+        this.id = id;
+        this.name = name;
+        this.authorSurname = authorSurname;
+        this.bookDatas = bookDatas;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAuthorSurname() {
+        return authorSurname;
+    }
+
+    public void setAuthorSurname(String authorSurname) {
+        this.authorSurname = authorSurname;
+    }
+
+    public Set<BookData> getBookDatas() {
+        return bookDatas;
+    }
+
+    public void setBookDatas(Set<BookData> bookDatas) {
+        this.bookDatas = bookDatas;
+    }
+
+    @Override
+    public String toString() {
+        return "Author{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", authorSurname='" + authorSurname + '\'' +
+                ", bookDatas=" + bookDatas +
+                '}';
+    }
 }
