@@ -1,19 +1,19 @@
 package com.libraryapp.library.book.web;
 
 import com.libraryapp.library.author.Author;
-import com.libraryapp.library.borrower.Borrower;
+import com.libraryapp.library.user.User;
 
 public class CreateBookDto {
 
     private Long bookId;
     private String title;
-    private Borrower borrower;
+    private User user;
     private Author author;
 
-    public CreateBookDto(Long bookId, String title, Borrower borrower, Author author) {
+    public CreateBookDto(Long bookId, String title, User user, Author author) {
         this.bookId = bookId;
         this.title = title;
-        this.borrower = borrower;
+        this.user = user;
         this.author = author;
     }
 
@@ -33,12 +33,12 @@ public class CreateBookDto {
         this.title = title;
     }
 
-    public Borrower getBorrower() {
-        return borrower;
+    public User getUser() {
+        return user;
     }
 
-    public void setBorrower(Borrower borrower) {
-        this.borrower = borrower;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Author getAuthor() {

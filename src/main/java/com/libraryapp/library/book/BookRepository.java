@@ -7,6 +7,6 @@ import java.util.List;
 public interface BookRepository extends JpaRepository<Book, Long> {
 //TODO; analiza co jest w repozytorium, a co trzeba napisać jako request
 
-    List<Book> findByTitle(String title);
+//    List<Book> findByTitle(String title);
 
 }

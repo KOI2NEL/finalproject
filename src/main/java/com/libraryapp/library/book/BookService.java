@@ -18,7 +18,7 @@ public class BookService {
     }
 
     public List<Book> getALL() {
-        return new ArrayList<>(bookRepository.findAll().stream().collect(Collectors.toList()));
+        return bookRepository.findAll().stream().collect(Collectors.toList());
     }
 
 //    public List<BookResponse> findByTitle (String title){
