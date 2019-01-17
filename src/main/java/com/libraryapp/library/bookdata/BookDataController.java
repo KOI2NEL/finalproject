@@ -28,7 +28,7 @@ public class BookDataController {
         return new ResponseEntity<List<BookData>>(bookDataList, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/user/", method = RequestMethod.POST)
+    @RequestMapping(value = "/create/", method = RequestMethod.POST)
     public ResponseEntity<BookData> createBookData(@RequestBody BookData bookData) {
         bookDataService.saveBookData(bookData);
         return new ResponseEntity<>(bookData, HttpStatus.CREATED);
