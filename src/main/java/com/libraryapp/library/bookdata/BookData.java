@@ -15,7 +15,7 @@ public class BookData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-//TODO: Dodać konstruktory, a jak
+
     private String title;
 
 // TODO: Zawsze mogę dodać autora do ksiązki, ale nie mogę dodać książki do autora bo mam adnotacke z joinami po tej stronie
@@ -31,13 +31,6 @@ public class BookData {
     private Set<Book> books = new HashSet<>();
 
     public BookData() {
-    }
-
-    public BookData(Long id, String title, Set<Author> authors, Set<Book> books) {
-        this.id = id;
-        this.title = title;
-        this.authors = authors;
-        this.books = books;
     }
 
     public Long getId() {
