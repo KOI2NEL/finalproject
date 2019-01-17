@@ -26,14 +26,14 @@ public class Borrow {
 
     private LocalDate returnDate;
 
-    private Currency fine = Currency.getInstance("PLN");
+    private Double fine;
 
     private boolean isActive;
 
     public Borrow() {
     }
 
-    public Borrow(Long id, User user, Book book, LocalDate borrowDate, LocalDate returnDate, Currency fine, boolean isActive) {
+    public Borrow(Long id, User user, Book book, LocalDate borrowDate, LocalDate returnDate, Double fine, boolean isActive) {
         this.id = id;
         this.user = user;
         this.book = book;
@@ -83,11 +83,11 @@ public class Borrow {
         this.returnDate = returnDate;
     }
 
-    public Currency getFine() {
+    public Double getFine() {
         return fine;
     }
 
-    public void setFine(Currency fine) {
+    public void setFine(Double fine) {
         this.fine = fine;
     }
 
