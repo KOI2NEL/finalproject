@@ -1,6 +1,5 @@
 package com.libraryapp.library.author;
 
-import com.libraryapp.library.book.Book;
 import com.libraryapp.library.bookdata.BookData;
 
 import javax.persistence.*;
@@ -19,7 +18,7 @@ public class Author {
     private String name;
 
     @Column(name = "author_surname")
-    private String authorSurname;
+    private String surname;
 
     @ManyToMany(mappedBy = "authors")
     private Set<BookData> bookDatas = new HashSet<>();
@@ -27,10 +26,10 @@ public class Author {
     public Author() {
     }
 
-    public Author(Long id, String name, String authorSurname, Set<BookData> bookDatas) {
+    public Author(Long id, String name, String surname, Set<BookData> bookDatas) {
         this.id = id;
         this.name = name;
-        this.authorSurname = authorSurname;
+        this.surname = surname;
         this.bookDatas = bookDatas;
     }
 
@@ -50,12 +49,12 @@ public class Author {
         this.name = name;
     }
 
-    public String getAuthorSurname() {
-        return authorSurname;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setAuthorSurname(String authorSurname) {
-        this.authorSurname = authorSurname;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public Set<BookData> getBookDatas() {
@@ -71,7 +70,7 @@ public class Author {
         return "Author{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", authorSurname='" + authorSurname + '\'' +
+                ", surname='" + surname + '\'' +
                 ", bookDatas=" + bookDatas +
                 '}';
     }
