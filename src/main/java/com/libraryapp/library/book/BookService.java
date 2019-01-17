@@ -4,14 +4,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 public class BookService {
 
-    //co jest uzywane przez BookService
     private final BookRepository bookRepository;
-
 
     public BookService(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
@@ -21,6 +20,18 @@ public class BookService {
         return bookRepository.findAll().stream().collect(Collectors.toList());
     }
 
+    public Optional<Book> getById(Long id) {
+        return bookRepository.findById(id);
+    }
+
+    public void addBook(Book book) {
+        bookRepository.save(book);
+    }
+
+//    public void deleteBook (Long id) {
+//        Optional<Book> bookToDelete = bookRepository.findById(id);
+//        bookRepository.delete(bookToDelete);
+//    }
 //    public List<BookResponse> findByTitle (String title){
 ////        return bookRepository.findByTitle(title);
 //    }

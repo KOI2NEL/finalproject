@@ -22,7 +22,6 @@ public class BookController {
 
     @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Book>> getBooks() {
-
         return new ResponseEntity<List<Book>>(HttpStatus.OK);
     }
 }
