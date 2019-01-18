@@ -7,7 +7,7 @@ public class BookDataMapper {
 
     public BookDataDto toDto(BookData bookData) {
 
-        return new BookDataDto(bookData.getId(),bookData.getTitle());
+        return new BookDataDto(bookData.getId(), bookData.getTitle());
     }
 
 

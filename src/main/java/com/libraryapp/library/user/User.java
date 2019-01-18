@@ -13,19 +13,14 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
 
-    @Column(name = "name")
     private String name;
 
-    @Column(name = "surname")
     private String surname;
 
-    @Column(name = "email")
-    private String email;
+    private String login;
 
-    @Column(name = "password")
     private char[] password;
 
     @OneToMany(mappedBy = "user")
@@ -39,11 +34,11 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String name, String surname, String email, char[] password, Set<Borrow> borrows) {
+    public User(Long id, String name, String surname, String login, char[] password, Set<Borrow> borrows) {
         this.id = id;
         this.name = name;
         this.surname = surname;
-        this.email = email;
+        this.login = login;
         this.password = password;
         this.borrows = borrows;
     }
@@ -72,12 +67,12 @@ public class User {
         this.surname = surname;
     }
 
-    public String getEmail() {
-        return email;
+    public String getLogin() {
+        return login;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public char[] getPassword() {
@@ -102,7 +97,7 @@ public class User {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", email='" + email + '\'' +
+                ", login='" + login + '\'' +
                 ", password=" + Arrays.toString(password) +
                 ", borrows=" + borrows +
                 '}';

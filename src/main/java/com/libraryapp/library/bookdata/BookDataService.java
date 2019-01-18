@@ -9,6 +9,7 @@ import java.util.Set;
 public class BookDataService {
 
     private final BookDataRepository bookDataRepository;
+
     public BookDataService(BookDataRepository bookDataRepository) {
         this.bookDataRepository = bookDataRepository;
     }
@@ -29,8 +30,10 @@ public class BookDataService {
         return bookDataRepository.save(bookData);
     }
 
-    public Set<BookData> findBookDatas(){
+    public Set<BookData> findBookDatas() {
         //TODO: Czy tu muszę zwracać Set Książek które ma autor. Jeżeli tak to jak? Stworzyć metodę, która zwróci mi BookDatas dla danego Autora?
         return null;
-    };
+    }
+
+    ;
 }

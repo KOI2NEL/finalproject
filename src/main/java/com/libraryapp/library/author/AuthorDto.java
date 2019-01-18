@@ -2,7 +2,9 @@ package com.libraryapp.library.author;
 
 import com.libraryapp.library.bookdata.BookDataDto;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class AuthorDto {
@@ -13,7 +15,7 @@ public class AuthorDto {
 
     private String surname;
 
-    private Set<BookDataDto> bookDataDtos = new HashSet<>();
+    private List<String> bookDataDtos = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -39,8 +41,11 @@ public class AuthorDto {
         this.surname = surname;
     }
 
-    public Set<BookDataDto> getBookDataDtos() {
+    public List<String> getBookDataDtos() {
         return bookDataDtos;
     }
 
+    public void setBookDataDtos(List<String> bookDataDtos) {
+        this.bookDataDtos = bookDataDtos;
+    }
 }

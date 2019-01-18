@@ -3,7 +3,9 @@ package com.libraryapp.library.bookdata;
 import com.libraryapp.library.author.AuthorDto;
 import com.libraryapp.library.book.BookDto;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class BookDataDto {
@@ -12,9 +14,9 @@ public class BookDataDto {
 
     private String title;
 
-    private Set<AuthorDto> authorDtos = new HashSet<>();
+    private List<String> authorDtos = new ArrayList<>();
 
-    private Set<BookDto> bookDtos = new HashSet<>();
+    private List<String> bookDtos = new ArrayList<>();
 
     public BookDataDto(Long id, String title) {
         this.id = id;

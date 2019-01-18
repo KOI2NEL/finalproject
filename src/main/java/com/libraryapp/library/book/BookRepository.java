@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface BookRepository extends JpaRepository<Book, Long> {
 //TODO: tu trzymam metody CRUDish (find....)
 
-    Optional<Book> findById (Long id);
+    Optional<Book> findById(Long id);
 
 //    void delete(Optional<Book> bookToDelete);
 

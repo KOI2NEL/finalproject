@@ -18,7 +18,7 @@ public class BookData {
 
     private String title;
 
-// TODO: Zawsze mogę dodać autora do ksiązki, ale nie mogę dodać książki do autora bo mam adnotacke z joinami po tej stronie
+    // TODO: Zawsze mogę dodać autora do ksiązki, ale nie mogę dodać książki do autora bo mam adnotacke z joinami po tej stronie
     @ManyToMany(cascade = {CascadeType.PERSIST})
     @JoinTable(
             name = "bookdatas_authors",

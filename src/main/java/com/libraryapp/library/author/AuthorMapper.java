@@ -23,10 +23,9 @@ public class AuthorMapper {
         authorDto.setId(author.getId());
         authorDto.setName(author.getName());
         authorDto.setSurname(author.getSurname());
-
         author.getBookDatas()
                 .forEach(bookData -> authorDto
-                        .getBookDataDtos().add(bookDataMapper.toDto(bookData)));
+                        .getBookDataDtos().add(author.getName()));
 
         return authorDto;
     }
@@ -45,7 +44,7 @@ public class AuthorMapper {
 //        return author;
 //    }
 
-    public Author toEntity (AuthorDto authorDto){
+    public Author toEntity(AuthorDto authorDto) {
         Author author = new Author();
         author.setId(authorDto.getId());
         author.setName(authorDto.getName());
