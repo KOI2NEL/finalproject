@@ -26,12 +26,11 @@ public class BookDataService {
         return bookDataRepository.findAll();
     }
 
-    public BookData saveBookData(BookData bookData) {
-        return bookDataRepository.save(bookData);
+    public CreateBookDataDto saveBookData(CreateBookDataDto createBookDataDto) {
+        return bookDataRepository.save(createBookDataDto);
     }
 
     public Set<BookData> findBookDatas() {
-        //TODO: Czy tu muszę zwracać Set Książek które ma autor. Jeżeli tak to jak? Stworzyć metodę, która zwróci mi BookDatas dla danego Autora?
         return null;
     }
 

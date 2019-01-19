@@ -1,6 +1,8 @@
 package com.libraryapp.library.author;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,17 +18,21 @@ public class AuthorController {
         this.authorService = authorService;
     }
 
-    @GetMapping
-    public List<AuthorDto> getAll() {
-        return authorService.getAllAuthors();
+    @RequestMapping(value = "/all/", method = RequestMethod.GET)
+    public ResponseEntity<List<AuthorResponse>> getAll() {
+        List<AuthorResponse> authorResponses = authorService.getAllAuthors();
+        if(authorResponses.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<AuthorResponse>>(authorResponses, HttpStatus.OK);
     }
 
-    @PostMapping
-    public void addAuthor(@RequestBody AuthorDto authorDto) {
-        authorService.addAuthor(authorDto);
+    @RequestMapping(value = "/add/", method = RequestMethod.POST)
+    public void add(@RequestBody CreateAuthorDto createAuthorDto) {
+        authorService.addAuthor(createAuthorDto);
     }
 
-    @GetMapping("/{id}")
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Author getById(@PathVariable("id") Long id) {
         return authorService.findById(id);
     }

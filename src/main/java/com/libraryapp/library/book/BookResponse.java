@@ -1,4 +1,4 @@
-package com.libraryapp.library.book.web;
+package com.libraryapp.library.book;
 
 public class BookResponse {
 

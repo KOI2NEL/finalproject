@@ -1,4 +1,4 @@
-package com.libraryapp.library.book.web;
+package com.libraryapp.library.book;
 
 import com.libraryapp.library.author.Author;
 import com.libraryapp.library.user.User;

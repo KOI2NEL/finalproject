@@ -21,17 +21,17 @@ public class BookDataController {
 
     @RequestMapping(value = "/all/", method = RequestMethod.GET)
     public ResponseEntity<List<BookData>> listAllBookData() {
-        List<BookData> bookDataList = bookDataService.findAll();
-        if (bookDataList.isEmpty()) {
+        List<BookData> bookDatas = bookDataService.findAll();
+        if (bookDatas.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<List<BookData>>(bookDataList, HttpStatus.OK);
+        return new ResponseEntity<List<BookData>>(bookDatas, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/create/", method = RequestMethod.POST)
-    public ResponseEntity<BookData> createBookData(@RequestBody BookData bookData) {
-        bookDataService.saveBookData(bookData);
-        return new ResponseEntity<>(bookData, HttpStatus.CREATED);
+    @RequestMapping(value = "/add/", method = RequestMethod.POST)
+    public ResponseEntity<CreateBookDataDto> createBookData(@RequestBody CreateBookDataDto createBookDataDto) {
+        bookDataService.saveBookData(createBookDataDto);
+        return new ResponseEntity<>(createBookDataDto, HttpStatus.CREATED);
     }
 
 }

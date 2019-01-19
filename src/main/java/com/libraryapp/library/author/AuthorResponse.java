@@ -1,21 +1,20 @@
 package com.libraryapp.library.author;
 
-import com.libraryapp.library.bookdata.BookDataDto;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-public class AuthorDto {
-
+public class AuthorResponse {
     private Long id;
 
     private String name;
 
     private String surname;
 
-    private List<String> bookDataDtos = new ArrayList<>();
+    public AuthorResponse(Long id, String name, String surname) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+    }
+
+    public AuthorResponse() {
+    }
 
     public Long getId() {
         return id;
@@ -39,13 +38,5 @@ public class AuthorDto {
 
     public void setSurname(String surname) {
         this.surname = surname;
-    }
-
-    public List<String> getBookDataDtos() {
-        return bookDataDtos;
-    }
-
-    public void setBookDataDtos(List<String> bookDataDtos) {
-        this.bookDataDtos = bookDataDtos;
     }
 }

@@ -16,16 +16,16 @@ public class AuthorService {
         this.authorMapper = authorMapper;
     }
 
-    public List<AuthorDto> getAllAuthors() {
-        return authorRepository.findAll().stream().map(authorMapper::toDto).collect(Collectors.toList());
+    public List<AuthorResponse> getAllAuthors() {
+        return authorRepository.findAll().stream().map(authorMapper::map).collect(Collectors.toList());
     }
 
-    public void addAuthor(AuthorDto authorDto) {
-        authorRepository.save(authorMapper.toEntity(authorDto));
+    public void addAuthor(CreateAuthorDto createAuthorDto) {
+        authorRepository.save(authorMapper.createNew(createAuthorDto));
     }
 
     public Author findById(Long id) {
-        Author author = authorRepository.findOne(id);
+        Author author = authorRepository.findById(id);
         return author;
     }
 }
