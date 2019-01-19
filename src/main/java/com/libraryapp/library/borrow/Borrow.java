@@ -6,6 +6,8 @@ import com.libraryapp.library.user.User;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Currency;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "borrows")
@@ -16,11 +18,16 @@ public class Borrow {
     @Column(name = "borrow_id")
     private Long id;
 
-    @ManyToOne
-    private User user;
+    @ManyToMany(mappedBy = "borrows")
+    private Set<User> user = new HashSet<>();
 
-    @ManyToOne
-    private Book book;
+    @ManyToMany
+    @JoinTable(
+            name = "borrows_books",
+            joinColumns = {@JoinColumn(name = "borrow_id")},
+            inverseJoinColumns = {@JoinColumn(name = "book_id")}
+    )
+    private Set<Book> books = new HashSet<>();
 
     private LocalDate borrowDate;
 
@@ -33,10 +40,9 @@ public class Borrow {
     public Borrow() {
     }
 
-    public Borrow(Long id, User user, Book book, LocalDate borrowDate, LocalDate returnDate, Double fine, boolean isActive) {
-        this.id = id;
+    public Borrow(Set<User> user, Set<Book> books, LocalDate borrowDate, LocalDate returnDate, Double fine, boolean isActive) {
         this.user = user;
-        this.book = book;
+        this.books = books;
         this.borrowDate = borrowDate;
         this.returnDate = returnDate;
         this.fine = fine;
@@ -51,20 +57,20 @@ public class Borrow {
         this.id = id;
     }
 
-    public User getUser() {
+    public Set<User> getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Set<User> user) {
         this.user = user;
     }
 
-    public Book getBook() {
-        return book;
+    public Set<Book> getBooks() {
+        return books;
     }
 
-    public void setBook(Book book) {
-        this.book = book;
+    public void setBooks(Set<Book> books) {
+        this.books = books;
     }
 
     public LocalDate getBorrowDate() {
@@ -97,18 +103,5 @@ public class Borrow {
 
     public void setActive(boolean active) {
         isActive = active;
-    }
-
-    @Override
-    public String toString() {
-        return "Borrow{" +
-                "id=" + id +
-                ", user=" + user +
-                ", book=" + book +
-                ", borrowDate=" + borrowDate +
-                ", returnDate=" + returnDate +
-                ", fine=" + fine +
-                ", isActive=" + isActive +
-                '}';
     }
 }

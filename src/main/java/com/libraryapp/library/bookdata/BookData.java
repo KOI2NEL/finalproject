@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "book_datas")
+@Table(name = "bookdatas")
 public class BookData {
 
     @Id

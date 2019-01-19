@@ -20,9 +20,9 @@ public class BookService {
         return bookRepository.findAll().stream().collect(Collectors.toList());
     }
 
-    public Optional<Book> getById(Long id) {
-        return bookRepository.findById(id);
-    }
+//    public Optional<Book> getById(Long id) {
+//        return bookRepository.findById(id);
+//    }
 
     public void addBook(Book book) {
         bookRepository.save(book);

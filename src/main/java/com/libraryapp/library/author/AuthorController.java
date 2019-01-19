@@ -10,7 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/author")
 public class AuthorController {
-
+    //getbyid, createauthor, getall, getauthorbyBooks
     private final AuthorService authorService;
 
     @Autowired
@@ -18,23 +18,24 @@ public class AuthorController {
         this.authorService = authorService;
     }
 
-    @RequestMapping(value = "/all/", method = RequestMethod.GET)
-    public ResponseEntity<List<AuthorResponse>> getAll() {
-        List<AuthorResponse> authorResponses = authorService.getAllAuthors();
-        if(authorResponses.isEmpty()){
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<List<AuthorResponse>>(authorResponses, HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/add/", method = RequestMethod.POST)
-    public void add(@RequestBody CreateAuthorDto createAuthorDto) {
-        authorService.addAuthor(createAuthorDto);
-    }
-
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Author getById(@PathVariable("id") Long id) {
-        return authorService.findById(id);
-    }
+//
+//    @RequestMapping(value = "/all/", method = RequestMethod.GET)
+//    public ResponseEntity<List<AuthorResponse>> getAll() {
+//        List<AuthorResponse> authorResponses = authorService.getAllAuthors();
+//        if(authorResponses.isEmpty()){
+//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        }
+//        return new ResponseEntity<List<AuthorResponse>>(authorResponses, HttpStatus.OK);
+//    }
+//
+//    @RequestMapping(value = "/add/", method = RequestMethod.POST)
+//    public void add(@RequestBody CreateAuthorDto createAuthorDto) {
+//        authorService.addAuthor(createAuthorDto);
+//    }
+//
+//    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+//    public Author getById(@PathVariable("id") Long id) {
+//        return authorService.findById(id);
+//    }
 
 }

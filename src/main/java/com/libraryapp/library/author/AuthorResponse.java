@@ -1,5 +1,7 @@
 package com.libraryapp.library.author;
 
+import java.util.Set;
+
 public class AuthorResponse {
     private Long id;
 
@@ -11,9 +13,6 @@ public class AuthorResponse {
         this.id = id;
         this.name = name;
         this.surname = surname;
-    }
-
-    public AuthorResponse() {
     }
 
     public Long getId() {
