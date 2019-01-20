@@ -29,4 +29,32 @@ public class BorrowResponse {
         this.fine = fine;
         this.isActive = isActive;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public UserResponse getUserResponse() {
+        return userResponse;
+    }
+
+    public BookResponse getBookResponse() {
+        return bookResponse;
+    }
+
+    public LocalDate getBorrowDate() {
+        return borrowDate;
+    }
+
+    public LocalDate getReturnDate() {
+        return returnDate;
+    }
+
+    public Double getFine() {
+        return fine;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
 }

@@ -9,11 +9,9 @@ import java.util.stream.Collectors;
 public class AuthorService {
 
     private final AuthorRepository authorRepository;
-    private final AuthorMapper authorMapper;
 
-    public AuthorService(AuthorRepository authorRepository, AuthorMapper authorMapper) {
+    public AuthorService(AuthorRepository authorRepository) {
         this.authorRepository = authorRepository;
-        this.authorMapper = authorMapper;
     }
 //
 //    public List<AuthorResponse> getAllAuthors() {
@@ -24,8 +22,8 @@ public class AuthorService {
 //        authorRepository.save(authorMapper.createNew(createAuthorDto));
 //    }
 //
-//    public Author findById(Long id) {
-//        Author author = authorRepository.findById(id);
-//        return author;
-//    }
+    public Author findById(Long id) {
+        Author author = authorRepository.findById(id);
+        return author;
+    }
 }

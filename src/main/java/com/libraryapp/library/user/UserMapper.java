@@ -11,6 +11,20 @@ public class UserMapper {
         this.borrowService = borrowService;
     }
 
+    public UserResponse map (User userEntity){
+//        return new UserResponse(userEntity.getId(),userEntity.getName(),userEntity.getSurname(),userEntity.getBorrows());
+        return null;
+    }
+
+    public User createNew(CreateUserDto userDto){
+        User user = new User();
+        user.setLogin(userDto.getLogin());
+        user.setName(userDto.getName());
+        user.setSurname(userDto.getSurname());
+        user.setPassword(userDto.getPassword());
+
+        return user;
+    }
 
     public UserDto toDto(User user) {
         UserDto userDto = new UserDto();

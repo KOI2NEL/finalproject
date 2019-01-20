@@ -12,11 +12,22 @@ public class BookResponse {
         this.bookDataResponse = bookDataResponse;
     }
 
+    public BookResponse() {
+    }
+
     public Long getBookId() {
         return bookId;
     }
 
     public BookDataResponse getBookDataResponse() {
         return bookDataResponse;
+    }
+
+    public void setBookId(Long bookId) {
+        this.bookId = bookId;
+    }
+
+    public void setBookDataResponse(BookDataResponse bookDataResponse) {
+        this.bookDataResponse = bookDataResponse;
     }
 }

@@ -1,23 +1,21 @@
 package com.libraryapp.library.author;
 
-import com.libraryapp.library.bookdata.BookData;
-import com.libraryapp.library.bookdata.BookDataMapper;
-import com.libraryapp.library.bookdata.BookDataService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class AuthorMapper {
 
-    private final BookDataMapper bookDataMapper;
-    private final BookDataService bookDataService;
-
-    @Autowired
-    public AuthorMapper(BookDataMapper bookDataMapper, BookDataService bookDataService) {
-        this.bookDataMapper = bookDataMapper;
-        this.bookDataService = bookDataService;
+    public AuthorResponse map(Author authorEntity) {
+        return new AuthorResponse(authorEntity.getId(), authorEntity.getName(), authorEntity.getSurname());
     }
 
+    public Author createNew(CreateAuthorDto AuthorDto) {
+        Author author = new Author();
+        author.setName(AuthorDto.getName());
+        author.setSurname(AuthorDto.getSurname());
+
+        return author;
+    }
 //
 //
 //    public Author createNew(CreateAuthorDto createAuthorDto) {
@@ -37,4 +35,4 @@ public class AuthorMapper {
 //        //TODO: Zwracać listę książek
 //            return authorResponse;
 //        }
-    }
+}

@@ -34,5 +34,10 @@ public class BookDataService {
         return null;
     }
 
+    public BookData findById(Long id) {
+        BookData bookData = bookDataRepository.findById(id);
+        return bookData;
+    }
+
     ;
 }

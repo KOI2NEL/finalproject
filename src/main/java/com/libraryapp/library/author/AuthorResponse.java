@@ -1,7 +1,5 @@
 package com.libraryapp.library.author;
 
-import java.util.Set;
-
 public class AuthorResponse {
     private Long id;
 
