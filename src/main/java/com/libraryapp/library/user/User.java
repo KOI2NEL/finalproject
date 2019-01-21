@@ -23,12 +23,7 @@ public class User {
 
     private char[] password;
 
-    @ManyToMany
-    @JoinTable(
-            name = "users_borrows",
-            joinColumns = {@JoinColumn(name = "user_id")},
-            inverseJoinColumns = {@JoinColumn(name = "borrow_id")}
-    )
+    @OneToMany(mappedBy = "user")
     private Set<Borrow> borrows = new HashSet<>();
 
 

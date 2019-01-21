@@ -2,10 +2,7 @@ package com.libraryapp.library.bookdata;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,12 +17,12 @@ public class BookDataController {
     }
 
     @RequestMapping(value = "/all/", method = RequestMethod.GET)
-    public ResponseEntity<List<BookData>> listAllBookData() {
-        List<BookData> bookDatas = bookDataService.findAll();
-        if (bookDatas.isEmpty()) {
+    public ResponseEntity<List<BookDataResponse>> listAllBookData() {
+        List<BookDataResponse> bookDataResponses = bookDataService.getAllBookDatas();
+        if (bookDataResponses.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<List<BookData>>(bookDatas, HttpStatus.OK);
+        return new ResponseEntity<List<BookDataResponse>>(bookDataResponses, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/add/", method = RequestMethod.POST)
@@ -34,4 +31,8 @@ public class BookDataController {
         return new ResponseEntity<>(createBookDataDto, HttpStatus.CREATED);
     }
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public BookDataResponse getById(@PathVariable("id") Long id){
+        return bookDataService.findResponseById(id);
+    }
 }

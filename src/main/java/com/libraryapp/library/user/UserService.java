@@ -35,6 +35,6 @@ public class UserService {
 
 
 //    public List<UserDto> getAllUsers() {
-//        return userRepository.findAll().stream().map(userMapper::toDto).collect(Collectors.toList());
+//        return userRepository.getAllBookDatas().stream().map(userMapper::toDto).collect(Collectors.toList());
 //    }
 }

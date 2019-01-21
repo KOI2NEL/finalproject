@@ -36,8 +36,8 @@ public class BorrowMapper {
 
     public Borrow createNew(CreateBorrowDto borrowDto) {
         Borrow borrow = new Borrow();
-        borrow.getUser().add(userService.findById(borrowDto.getUserId()));
-        borrow.getBooks().add(bookService.finById(borrowDto.getBookId()));
+        borrow.setUser(userService.findById(borrowDto.getUserId()));
+        borrow.setBook(bookService.findById(borrowDto.getBookId()));
         return borrow;
     }
 }

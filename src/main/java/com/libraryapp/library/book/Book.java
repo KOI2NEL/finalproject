@@ -21,7 +21,7 @@ public class Book {
     @ManyToOne
     private BookData bookData;
 
-    @ManyToMany(mappedBy = "books")
+    @OneToMany(mappedBy = "book")
     private Set<Borrow> borrows = new HashSet<>();
 
     public Book() {

@@ -28,7 +28,7 @@ public class BookService {
         bookRepository.save(book);
     }
 
-    public Book finById(Long id) {
+    public Book findById(Long id) {
         return bookRepository.findById(id);
     }
 

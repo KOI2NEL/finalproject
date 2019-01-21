@@ -16,23 +16,5 @@ public class AuthorMapper {
 
         return author;
     }
-//
-//
-//    public Author createNew(CreateAuthorDto createAuthorDto) {
-//        Author author = new Author();
-//        author.setId(createAuthorDto.getId());
-//        author.setName(createAuthorDto.getName());
-//        author.setSurname(createAuthorDto.getSurname());
-//        //TODO: Zwracać listę książek
-//        return author;
-//    }
-//
-//    public AuthorResponse map(Author author) {
-//        AuthorResponse authorResponse = new AuthorResponse();
-//        authorResponse.setId(author.getId());
-//        authorResponse.setName(author.getName());
-//        authorResponse.setSurname(author.getSurname());
-//        //TODO: Zwracać listę książek
-//            return authorResponse;
-//        }
+
 }

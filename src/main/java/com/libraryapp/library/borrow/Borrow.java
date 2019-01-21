@@ -18,16 +18,11 @@ public class Borrow {
     @Column(name = "borrow_id")
     private Long id;
 
-    @ManyToMany(mappedBy = "borrows")
-    private Set<User> user = new HashSet<>();
+    @ManyToOne
+    private User user;
 
-    @ManyToMany
-    @JoinTable(
-            name = "borrows_books",
-            joinColumns = {@JoinColumn(name = "borrow_id")},
-            inverseJoinColumns = {@JoinColumn(name = "book_id")}
-    )
-    private Set<Book> books = new HashSet<>();
+    @ManyToOne
+    private Book book;
 
     private LocalDate borrowDate;
 
@@ -40,9 +35,9 @@ public class Borrow {
     public Borrow() {
     }
 
-    public Borrow(Set<User> user, Set<Book> books, LocalDate borrowDate, LocalDate returnDate, Double fine, boolean isActive) {
+    public Borrow(User user, Book book, LocalDate borrowDate, LocalDate returnDate, Double fine, boolean isActive) {
         this.user = user;
-        this.books = books;
+        this.book = book;
         this.borrowDate = borrowDate;
         this.returnDate = returnDate;
         this.fine = fine;
@@ -57,20 +52,20 @@ public class Borrow {
         this.id = id;
     }
 
-    public Set<User> getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(Set<User> user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
-    public Set<Book> getBooks() {
-        return books;
+    public Book getBook() {
+        return book;
     }
 
-    public void setBooks(Set<Book> books) {
-        this.books = books;
+    public void setBook(Book book) {
+        this.book = book;
     }
 
     public LocalDate getBorrowDate() {
