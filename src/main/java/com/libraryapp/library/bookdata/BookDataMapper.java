@@ -23,8 +23,8 @@ public class BookDataMapper {
         bookDataResponse.setId(bookDataEntity.getId());
         bookDataResponse.setTitle(bookDataEntity.getTitle());
 
-        bookDataEntity.getAuthors().forEach(author -> bookDataResponse.getAuthorResponse().add(authorMapper.map(author)));
-
+        bookDataEntity.getAuthors().forEach(author -> bookDataResponse.getAuthorResponse()
+                .add(authorMapper.map(author)));
 
         return bookDataResponse;
     }

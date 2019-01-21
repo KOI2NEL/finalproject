@@ -20,9 +20,8 @@ public class BookMapper {
     public BookResponse map(Book bookEntity) {
         BookResponse bookResponse = new BookResponse();
         bookResponse.setBookId(bookEntity.getId());
-
-        //TODO: Przypisać bookData do Book
-        return null;
+        bookResponse.setBookDataResponse(bookDataMapper.map(bookEntity.getBookData()));
+        return bookResponse;
     }
 
     public Book createNew(CreateBookDto bookDto) {

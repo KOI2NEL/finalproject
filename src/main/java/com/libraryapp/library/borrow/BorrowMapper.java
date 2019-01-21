@@ -1,20 +1,43 @@
 package com.libraryapp.library.borrow;
 
+import com.libraryapp.library.book.BookService;
+import com.libraryapp.library.user.UserResponse;
+import com.libraryapp.library.user.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 
 @Component
 public class BorrowMapper {
 
+    private final UserService userService;
+    private final BookService bookService;
+
+    @Autowired
+    public BorrowMapper(UserService userService, BookService bookService) {
+        this.userService = userService;
+        this.bookService = bookService;
+    }
+
+
     public BorrowResponse map(Borrow borrowEntity) {
-//        return new BorrowResponse(borrowEntity.getId(),borrowEntity.getUser(),borrowEntity.getBooks(),borrowEntity.getBorrowDate(),borrowEntity.getReturnDate(),borrowEntity.getFine(),borrowEntity.isActive());
-        return null;
+        BorrowResponse borrowResponse = new BorrowResponse();
+        borrowResponse.setId(borrowEntity.getId());
+        borrowResponse.setBorrowDate(borrowEntity.getBorrowDate());
+        borrowResponse.setReturnDate(borrowEntity.getReturnDate());
+        borrowResponse.setFine(borrowEntity.getFine());
+        borrowResponse.setActive(borrowEntity.isActive());
+
+        UserResponse userResponses = userService.getUserOfBorrow(borrowEntity);
+        borrowResponse.setUserResponse(userResponses);
+
+        return borrowResponse;
     }
 
     public Borrow createNew(CreateBorrowDto borrowDto) {
         Borrow borrow = new Borrow();
-//        borrow.setBooks(borrowDto.getBookId());
-//        borrow.setUser(borrowDto.getUserId());
-//
+        borrow.getUser().add(userService.findById(borrowDto.getUserId()));
+        borrow.getBooks().add(bookService.finById(borrowDto.getBookId()));
         return borrow;
     }
 }

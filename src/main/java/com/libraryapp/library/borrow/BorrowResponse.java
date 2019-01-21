@@ -30,6 +30,9 @@ public class BorrowResponse {
         this.isActive = isActive;
     }
 
+    public BorrowResponse() {
+    }
+
     public Long getId() {
         return id;
     }
@@ -56,5 +59,33 @@ public class BorrowResponse {
 
     public boolean isActive() {
         return isActive;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setUserResponse(UserResponse userResponse) {
+        this.userResponse = userResponse;
+    }
+
+    public void setBookResponse(BookResponse bookResponse) {
+        this.bookResponse = bookResponse;
+    }
+
+    public void setBorrowDate(LocalDate borrowDate) {
+        this.borrowDate = borrowDate;
+    }
+
+    public void setReturnDate(LocalDate returnDate) {
+        this.returnDate = returnDate;
+    }
+
+    public void setFine(Double fine) {
+        this.fine = fine;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 }

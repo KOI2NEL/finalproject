@@ -28,6 +28,10 @@ public class BookService {
         bookRepository.save(book);
     }
 
+    public Book finById(Long id) {
+        return bookRepository.findById(id);
+    }
+
 //    public void deleteBook (Long id) {
 //        Optional<Book> bookToDelete = bookRepository.findById(id);
 //        bookRepository.delete(bookToDelete);
