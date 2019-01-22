@@ -40,7 +40,7 @@ public class LibraryApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 //        BookData bookData = new BookData(1L,"Title");
-//        bookDataService.saveBookData(bookData);
+//        bookDataService.addBookData(bookData);
 //        System.out.println("Dodano książkę: " + bookData.toString());
     }
 }

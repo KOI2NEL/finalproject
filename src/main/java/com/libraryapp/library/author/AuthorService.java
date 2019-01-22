@@ -29,12 +29,12 @@ public class AuthorService {
     }
 
     public Author findById(Long id) {
-        Author author = null;
+
         try {
-            author = authorRepository.findById(id);
-            return author;
+            return authorRepository.findById(id);
         } catch (Exception e) {
             System.out.println(e.getMessage() + "Couldn't find Author with id: " + id);
+            e.printStackTrace();
             return null;
         }
 

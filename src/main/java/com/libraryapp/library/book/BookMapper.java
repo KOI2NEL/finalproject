@@ -1,5 +1,6 @@
 package com.libraryapp.library.book;
 
+import com.libraryapp.library.bookdata.BookData;
 import com.libraryapp.library.bookdata.BookDataMapper;
 import com.libraryapp.library.bookdata.BookDataService;
 import org.springframework.stereotype.Component;
@@ -25,8 +26,16 @@ public class BookMapper {
 
     public Book createNew(CreateBookDto bookDto) {
         Book book = new Book();
-        book.setBookData(bookDataService.findById(bookDto.getBookDataId()));
-        return book;
+
+        BookData bookData = bookDataService.findById(bookDto.getBookDataId());
+
+        if (bookData != null) {
+            book.setBookData(bookData);
+            return book;
+        } else {
+            System.out.println("Was not possible to get book data from db with id: " + bookDto.getBookDataId());
+            return null;
+        }
     }
 
 }

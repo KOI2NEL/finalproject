@@ -12,10 +12,10 @@ import java.util.Set;
 @Table(name = "bookdatas")
 public class BookData {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String title;
 
     // TODO: Zawsze mogę dodać autora do ksiązki, ale nie mogę dodać książki do autora bo mam adnotacke z joinami po tej stronie
@@ -27,7 +27,7 @@ public class BookData {
     )
     private Set<Author> authors = new HashSet<>();
 
-    @OneToMany(mappedBy = "bookData")
+    @OneToMany(mappedBy = "bookData", fetch = FetchType.EAGER)
     private Set<Book> books = new HashSet<>();
 
     public BookData() {

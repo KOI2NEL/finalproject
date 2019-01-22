@@ -26,7 +26,7 @@ public class BookDataService {
                 .collect(Collectors.toList());
     }
 
-    public BookDataResponse saveBookData(CreateBookDataDto createBookDataDto) {
+    public BookDataResponse addBookData(CreateBookDataDto createBookDataDto) {
         BookData bookData = bookDataMapper.createNew(createBookDataDto);
         try {
 
@@ -40,8 +40,14 @@ public class BookDataService {
     }
 
     public BookData findById(Long id) {
-        BookData bookData = bookDataRepository.findById(id);
-        return bookData;
+
+        try {
+            return bookDataRepository.findById(id);
+        } catch (Exception e) {
+            System.out.println("Was not possible to get book data from db with id: " + id);
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public BookDataResponse findResponseById(Long id) {

@@ -43,6 +43,12 @@ public class BookDataMapper {
                 bookData.getAuthors().add(author);
             }
         });
+
+        if (bookData.getAuthors().contains(null)) {
+            System.out.println("At least one of authors is null or is not possible to get it from db");
+            return null;
+        }
+
         return bookData;
     }
 

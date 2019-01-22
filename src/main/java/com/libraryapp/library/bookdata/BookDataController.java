@@ -27,7 +27,7 @@ public class BookDataController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ResponseEntity<BookDataResponse> createBookData(@RequestBody CreateBookDataDto createBookDataDto) {
-        BookDataResponse bookDataResponse = bookDataService.saveBookData(createBookDataDto);
+        BookDataResponse bookDataResponse = bookDataService.addBookData(createBookDataDto);
         if (bookDataResponse != null) {
             return new ResponseEntity<>(bookDataResponse, HttpStatus.CREATED);
         }
