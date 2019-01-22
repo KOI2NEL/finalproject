@@ -26,8 +26,17 @@ public class BookDataService {
                 .collect(Collectors.toList());
     }
 
-    public CreateBookDataDto saveBookData(CreateBookDataDto createBookDataDto) {
-        return bookDataRepository.save(createBookDataDto);
+    public BookDataResponse saveBookData(CreateBookDataDto createBookDataDto) {
+        BookData bookData = bookDataMapper.createNew(createBookDataDto);
+        try {
+
+            return bookDataMapper.map(bookDataRepository.save(bookData));
+
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage() + " Couldnt save BookData.");
+            return null;
+        }
     }
 
     public BookData findById(Long id) {

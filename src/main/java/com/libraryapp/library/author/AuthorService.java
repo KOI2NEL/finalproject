@@ -29,8 +29,15 @@ public class AuthorService {
     }
 
     public Author findById(Long id) {
-        Author author = authorRepository.findById(id);
-        return author;
+        Author author = null;
+        try {
+            author = authorRepository.findById(id);
+            return author;
+        } catch (Exception e) {
+            System.out.println(e.getMessage() + "Couldn't find Author with id: " + id);
+            return null;
+        }
+
     }
 
     public AuthorResponse findResponseById(Long id) {

@@ -7,6 +7,9 @@ import com.libraryapp.library.borrow.BorrowRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class UserService {
 
@@ -33,8 +36,19 @@ public class UserService {
         return userRepository.findById(id);
     }
 
+    public List<UserResponse> getAllUsers() {
+        return userRepository.findAll()
+                .stream()
+                .map(userMapper::map)
+                .collect(Collectors.toList());
+    }
 
-//    public List<UserDto> getAllUsers() {
-//        return userRepository.getAllBookDatas().stream().map(userMapper::toDto).collect(Collectors.toList());
-//    }
+    public void addUser(CreateUserDto createUserDto) {
+        userRepository.save(userMapper.createNew(createUserDto));
+    }
+
+    public UserResponse findResponseById(Long id) {
+        User user = findById(id);
+        return userMapper.map(user);
+    }
 }

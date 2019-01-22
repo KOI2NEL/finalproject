@@ -16,6 +16,9 @@ public class CreateUserDto {
         this.password = password;
     }
 
+    public CreateUserDto() {
+    }
+
     public String getName() {
         return name;
     }

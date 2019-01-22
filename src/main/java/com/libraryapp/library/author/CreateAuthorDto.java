@@ -18,6 +18,9 @@ public class CreateAuthorDto {
         this.surname = surname;
     }
 
+    public CreateAuthorDto() {
+    }
+
     public String getName() {
         return name;
     }

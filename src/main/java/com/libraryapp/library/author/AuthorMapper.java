@@ -6,7 +6,12 @@ import org.springframework.stereotype.Component;
 public class AuthorMapper {
 
     public AuthorResponse map(Author authorEntity) {
-        return new AuthorResponse(authorEntity.getId(), authorEntity.getName(), authorEntity.getSurname());
+        try {
+            return new AuthorResponse(authorEntity.getId(), authorEntity.getName(), authorEntity.getSurname());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public Author createNew(CreateAuthorDto AuthorDto) {

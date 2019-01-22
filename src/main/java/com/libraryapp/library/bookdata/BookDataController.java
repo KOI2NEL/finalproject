@@ -16,7 +16,7 @@ public class BookDataController {
         this.bookDataService = bookDataService;
     }
 
-    @RequestMapping(value = "/all/", method = RequestMethod.GET)
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
     public ResponseEntity<List<BookDataResponse>> listAllBookData() {
         List<BookDataResponse> bookDataResponses = bookDataService.getAllBookDatas();
         if (bookDataResponses.isEmpty()) {
@@ -25,14 +25,17 @@ public class BookDataController {
         return new ResponseEntity<List<BookDataResponse>>(bookDataResponses, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/add/", method = RequestMethod.POST)
-    public ResponseEntity<CreateBookDataDto> createBookData(@RequestBody CreateBookDataDto createBookDataDto) {
-        bookDataService.saveBookData(createBookDataDto);
-        return new ResponseEntity<>(createBookDataDto, HttpStatus.CREATED);
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public ResponseEntity<BookDataResponse> createBookData(@RequestBody CreateBookDataDto createBookDataDto) {
+        BookDataResponse bookDataResponse = bookDataService.saveBookData(createBookDataDto);
+        if (bookDataResponse != null) {
+            return new ResponseEntity<>(bookDataResponse, HttpStatus.CREATED);
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public BookDataResponse getById(@PathVariable("id") Long id){
+    public BookDataResponse getById(@PathVariable("id") Long id) {
         return bookDataService.findResponseById(id);
     }
 

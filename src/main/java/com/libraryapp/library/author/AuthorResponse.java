@@ -13,6 +13,9 @@ public class AuthorResponse {
         this.surname = surname;
     }
 
+    public AuthorResponse() {
+    }
+
     public Long getId() {
         return id;
     }

@@ -2,6 +2,7 @@ package com.libraryapp.library.bookdata;
 
 import com.libraryapp.library.author.AuthorResponse;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class BookDataResponse {
@@ -9,7 +10,7 @@ public class BookDataResponse {
 
     private String title;
 
-    private Set<AuthorResponse> authorResponse;
+    private Set<AuthorResponse> authorResponse = new HashSet<>();
 
     public BookDataResponse(Long id, String title, Set<AuthorResponse> authorResponse) {
         this.id = id;

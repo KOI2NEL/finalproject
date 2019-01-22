@@ -24,6 +24,9 @@ public class CreateBorrowDto {
         this.bookId = bookId;
     }
 
+    public CreateBorrowDto() {
+    }
+
     public Long getUserId() {
         return userId;
     }

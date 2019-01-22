@@ -16,6 +16,9 @@ public class CreateBookDataDto {
         this.authorId = authorId;
     }
 
+    public CreateBookDataDto() {
+    }
+
     public String getTitle() {
         return title;
     }

@@ -1,5 +1,6 @@
 package com.libraryapp.library.bookdata;
 
+import com.libraryapp.library.author.Author;
 import com.libraryapp.library.author.AuthorMapper;
 import com.libraryapp.library.author.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,15 +24,25 @@ public class BookDataMapper {
         bookDataResponse.setId(bookDataEntity.getId());
         bookDataResponse.setTitle(bookDataEntity.getTitle());
 
-        bookDataEntity.getAuthors().forEach(author -> bookDataResponse.getAuthorResponse()
-                .add(authorMapper.map(author)));
+        try {
+            bookDataEntity.getAuthors().forEach(author -> bookDataResponse.getAuthorResponse()
+                    .add(authorMapper.map(author)));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return bookDataResponse;
     }
 
-    public BookData createNew(CreateBookDataDto bookDataDto) {
+    public BookData createNew(CreateBookDataDto createBookDataDto) {
         BookData bookData = new BookData();
-        bookDataDto.getAuthorId().forEach(id -> bookData.getAuthors().add(authorService.findById(id)));
+        bookData.setTitle(createBookDataDto.getTitle());
+        createBookDataDto.getAuthorId().forEach(id -> {
+            Author author = authorService.findById(id);
+            if (author != null) {
+                bookData.getAuthors().add(author);
+            }
+        });
         return bookData;
     }
 

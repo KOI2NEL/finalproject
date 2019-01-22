@@ -14,6 +14,9 @@ public class CreateBookDto {
         this.bookDataId = bookDataId;
     }
 
+    public CreateBookDto() {
+    }
+
     public Long getBookDataId() {
         return bookDataId;
     }
