@@ -7,12 +7,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class BookMapper {
 
-    private final BookController bookController;
+
     private final BookDataService bookDataService;
     private final BookDataMapper bookDataMapper;
 
-    public BookMapper(BookController bookController, BookDataService bookDataService, BookDataMapper bookDataMapper) {
-        this.bookController = bookController;
+    public BookMapper(BookDataService bookDataService, BookDataMapper bookDataMapper) {
         this.bookDataService = bookDataService;
         this.bookDataMapper = bookDataMapper;
     }

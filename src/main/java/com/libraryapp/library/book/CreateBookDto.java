@@ -9,7 +9,7 @@ import java.util.List;
 public class CreateBookDto {
 
     private Long bookDataId;
-
+    //todo: dodac liste authorid i przerobic reszte
     public CreateBookDto(Long bookDataId) {
         this.bookDataId = bookDataId;
     }

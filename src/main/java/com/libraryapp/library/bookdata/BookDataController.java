@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/bookdatas")
+@RequestMapping("/bookdata")
 public class BookDataController {
 
     private final BookDataService bookDataService;
@@ -35,4 +35,6 @@ public class BookDataController {
     public BookDataResponse getById(@PathVariable("id") Long id){
         return bookDataService.findResponseById(id);
     }
+
+
 }
