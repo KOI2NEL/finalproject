@@ -9,6 +9,7 @@ public class UserMapper {
 
     public UserResponse map(User userEntity) {
         UserResponse userResponse = new UserResponse();
+        userResponse.setId(userEntity.getId());
         userResponse.setName(userEntity.getName());
         userResponse.setSurname(userEntity.getSurname());
 

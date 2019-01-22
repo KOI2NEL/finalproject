@@ -21,20 +21,15 @@ public class User {
 
     private String login;
 
-    private char[] password;
+    private String password;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private Set<Borrow> borrows = new HashSet<>();
-
-
-//    @ManyToMany(mappedBy = "users")
-//    private Set<Book> books = new HashSet<>();
-
 
     public User() {
     }
 
-    public User(Long id, String name, String surname, String login, char[] password, Set<Borrow> borrows) {
+    public User(Long id, String name, String surname, String login, String password, Set<Borrow> borrows) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -75,11 +70,11 @@ public class User {
         this.login = login;
     }
 
-    public char[] getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(char[] password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -98,7 +93,7 @@ public class User {
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", login='" + login + '\'' +
-                ", password=" + Arrays.toString(password) +
+                ", password='" + password + '\'' +
                 ", borrows=" + borrows +
                 '}';
     }

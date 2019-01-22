@@ -20,23 +20,23 @@ public class UserController {
 
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public ResponseEntity<List<UserResponse>> getAll(){
+    public ResponseEntity<List<UserResponse>> getAll() {
         List<UserResponse> userResponses = userService.getAllUsers();
-        if (userResponses.isEmpty()){
+        if (userResponses.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<List<UserResponse>>(userResponses,HttpStatus.OK);
+        return new ResponseEntity<List<UserResponse>>(userResponses, HttpStatus.OK);
 
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public HttpStatus add(@RequestBody CreateUserDto createUserDto){
+    public HttpStatus add(@RequestBody CreateUserDto createUserDto) {
         userService.addUser(createUserDto);
         return HttpStatus.CREATED;
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public UserResponse getById(Long id){
+    public UserResponse getById(@PathVariable("id") Long id) {
         return userService.findResponseById(id);
     }
 }

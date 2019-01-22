@@ -23,7 +23,7 @@ public class BorrowController {
         if (borrowResponses.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<List<BorrowResponse>>(borrowResponses, HttpStatus.OK);
+        return new ResponseEntity<>(borrowResponses, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/add/", method = RequestMethod.POST)

@@ -11,13 +11,13 @@ public class CreateBorrowDto {
 
     private Long bookId;
 
-    private LocalDate borrowDate = LocalDate.now();
+    private LocalDate borrowDate;
 
-    private LocalDate returnDate = borrowDate.plusDays(7);
+    private LocalDate requiredReturnDate;
 
-    private Double fine = 0.0;
+    private LocalDate returnDate;
 
-    private boolean isActive = true;
+    private boolean isActive;
 
     public CreateBorrowDto(Long userId, Long bookId) {
         this.userId = userId;
@@ -33,5 +33,45 @@ public class CreateBorrowDto {
 
     public Long getBookId() {
         return bookId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public void setBookId(Long bookId) {
+        this.bookId = bookId;
+    }
+
+    public LocalDate getBorrowDate() {
+        return borrowDate;
+    }
+
+    public void setBorrowDate(LocalDate borrowDate) {
+        this.borrowDate = borrowDate;
+    }
+
+    public LocalDate getRequiredReturnDate() {
+        return requiredReturnDate;
+    }
+
+    public void setRequiredReturnDate(LocalDate requiredReturnDate) {
+        this.requiredReturnDate = requiredReturnDate;
+    }
+
+    public LocalDate getReturnDate() {
+        return returnDate;
+    }
+
+    public void setReturnDate(LocalDate returnDate) {
+        this.returnDate = returnDate;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 }

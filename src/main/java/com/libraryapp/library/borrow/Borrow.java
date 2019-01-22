@@ -5,9 +5,6 @@ import com.libraryapp.library.user.User;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Currency;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "borrows")
@@ -26,6 +23,8 @@ public class Borrow {
 
     private LocalDate borrowDate;
 
+    private LocalDate requiredReturnDate;
+
     private LocalDate returnDate;
 
     private Double fine;
@@ -42,6 +41,14 @@ public class Borrow {
         this.returnDate = returnDate;
         this.fine = fine;
         this.isActive = isActive;
+    }
+
+    public LocalDate getRequiredReturnDate() {
+        return requiredReturnDate;
+    }
+
+    public void setRequiredReturnDate(LocalDate requiredReturnDate) {
+        this.requiredReturnDate = requiredReturnDate;
     }
 
     public Long getId() {

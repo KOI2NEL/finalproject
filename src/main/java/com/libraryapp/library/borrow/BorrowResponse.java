@@ -14,6 +14,8 @@ public class BorrowResponse {
 
     private LocalDate borrowDate;
 
+    private LocalDate requiredReturnDate;
+
     private LocalDate returnDate;
 
     private Double fine;
@@ -87,5 +89,13 @@ public class BorrowResponse {
 
     public void setActive(boolean active) {
         isActive = active;
+    }
+
+    public LocalDate getRequiredReturnDate() {
+        return requiredReturnDate;
+    }
+
+    public void setRequiredReturnDate(LocalDate requiredReturnDate) {
+        this.requiredReturnDate = requiredReturnDate;
     }
 }

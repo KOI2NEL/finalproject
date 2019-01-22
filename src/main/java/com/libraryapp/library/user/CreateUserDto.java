@@ -7,9 +7,9 @@ public class CreateUserDto {
 
     private String login;
 
-    private char[] password;
+    private String password;
 
-    public CreateUserDto(String name, String surname, String login, char[] password) {
+    public CreateUserDto(String name, String surname, String login, String password) {
         this.name = name;
         this.surname = surname;
         this.login = login;
@@ -31,7 +31,7 @@ public class CreateUserDto {
         return login;
     }
 
-    public char[] getPassword() {
+    public String getPassword() {
         return password;
     }
 }
