@@ -23,13 +23,17 @@ public class AuthorController {
         if (authorResponses.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<List<AuthorResponse>>(authorResponses, HttpStatus.OK);
+        return new ResponseEntity<>(authorResponses, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/add/", method = RequestMethod.POST)
-    public HttpStatus add(@RequestBody CreateAuthorDto createAuthorDto) {
-        authorService.addAuthor(createAuthorDto);
-        return HttpStatus.CREATED;
+    public ResponseEntity<AuthorResponse> add(@RequestBody CreateAuthorDto createAuthorDto) {
+        AuthorResponse authorResponse = authorService.addAuthor(createAuthorDto);
+
+        if (authorResponse != null) {
+            return new ResponseEntity<>(authorResponse, HttpStatus.CREATED);
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)

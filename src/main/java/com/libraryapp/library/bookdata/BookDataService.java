@@ -3,8 +3,6 @@ package com.libraryapp.library.bookdata;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 @Service
@@ -29,10 +27,7 @@ public class BookDataService {
     public BookDataResponse addBookData(CreateBookDataDto createBookDataDto) {
         BookData bookData = bookDataMapper.createNew(createBookDataDto);
         try {
-
             return bookDataMapper.map(bookDataRepository.save(bookData));
-
-
         } catch (Exception e) {
             System.out.println(e.getMessage() + " Couldnt save BookData.");
             return null;

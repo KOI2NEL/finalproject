@@ -24,8 +24,16 @@ public class AuthorService {
                 .collect(Collectors.toList());
     }
 
-    public void addAuthor(CreateAuthorDto createAuthorDto) {
-        authorRepository.save(authorMapper.createNew(createAuthorDto));
+    public AuthorResponse addAuthor(CreateAuthorDto createAuthorDto) {
+        Author author = authorMapper.createNew(createAuthorDto);
+
+        try {
+            return authorMapper.map(authorRepository.save(author));
+        } catch (Exception e) {
+            System.out.println("Was not possible to save author to database");
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public Author findById(Long id) {
