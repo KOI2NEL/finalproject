@@ -43,8 +43,16 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
-    public void addUser(CreateUserDto createUserDto) {
-        userRepository.save(userMapper.createNew(createUserDto));
+    public UserResponse addUser(CreateUserDto createUserDto) {
+        User user = userMapper.createNew(createUserDto);
+
+        try {
+            return userMapper.map(userRepository.save(user));
+        } catch (Exception e) {
+            System.out.println("Was not possible to save user to database");
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public UserResponse findResponseById(Long id) {

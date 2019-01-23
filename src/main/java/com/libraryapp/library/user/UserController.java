@@ -25,14 +25,18 @@ public class UserController {
         if (userResponses.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<List<UserResponse>>(userResponses, HttpStatus.OK);
+        return new ResponseEntity<>(userResponses, HttpStatus.OK);
 
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public HttpStatus add(@RequestBody CreateUserDto createUserDto) {
-        userService.addUser(createUserDto);
-        return HttpStatus.CREATED;
+    public ResponseEntity<UserResponse> add(@RequestBody CreateUserDto createUserDto) {
+        UserResponse userResponse = userService.addUser(createUserDto);
+
+        if(userResponse != null){
+            return new ResponseEntity<>(userResponse, HttpStatus.CREATED);
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)

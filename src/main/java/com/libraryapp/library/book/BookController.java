@@ -18,7 +18,7 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    @RequestMapping(value = "/all/", method = RequestMethod.GET)
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
     public ResponseEntity<List<BookResponse>> getAll() {
         List<BookResponse> bookResponses = bookService.getAllBooks();
         if (bookResponses.isEmpty()) {
@@ -27,7 +27,7 @@ public class BookController {
         return new ResponseEntity<List<BookResponse>>(bookResponses, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/add/", method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ResponseEntity<BookResponse> add(@RequestBody CreateBookDto createBookDto) {
         BookResponse bookResponse = bookService.addBook(createBookDto);
 

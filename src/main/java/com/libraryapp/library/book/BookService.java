@@ -18,7 +18,10 @@ public class BookService {
     }
 
     public List<BookResponse> getAllBooks() {
-        return bookRepository.findAll().stream().map(bookMapper::map).collect(Collectors.toList());
+        return bookRepository.findAll()
+                .stream()
+                .map(bookMapper::map)
+                .collect(Collectors.toList());
     }
 
 
