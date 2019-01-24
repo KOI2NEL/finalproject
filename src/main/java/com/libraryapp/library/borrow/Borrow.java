@@ -1,5 +1,7 @@
 package com.libraryapp.library.borrow;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.libraryapp.library.book.Book;
 import com.libraryapp.library.user.User;
 
@@ -8,6 +10,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "borrows")
+@JsonSerialize(using = LocalDateTimeSerializer.class)
 public class Borrow {
 
     @Id

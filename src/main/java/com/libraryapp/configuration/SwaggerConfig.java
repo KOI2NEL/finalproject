@@ -24,17 +24,9 @@ public class SwaggerConfig {
                 .select()
                 .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())
-                .build()
-                .securitySchemes(Lists.newArrayList(apiKey()));
+                .build();
     }
 
-    @Bean
-    SecurityConfiguration securityInfo(){
-        return new SecurityConfiguration(null, null, null, null,"", ApiKeyVehicle.HEADER,"Authorization","");
-    }
 
-    private ApiKey apiKey(){
-        return new ApiKey("Authorization","Authorization","header");
-    }
 }
 

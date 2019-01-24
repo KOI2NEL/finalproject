@@ -1,7 +1,8 @@
 package com.libraryapp.library.borrow;
 
-import com.libraryapp.library.book.BookResponse;
-import com.libraryapp.library.book.CreateBookDto;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
@@ -11,10 +12,13 @@ public class CreateBorrowDto {
 
     private Long bookId;
 
+    @DateTimeFormat(style = "yyyy-MM-dd")
     private LocalDate borrowDate;
 
+    @DateTimeFormat(style = "yyyy-MM-dd")
     private LocalDate requiredReturnDate;
 
+    @DateTimeFormat(style = "yyyy-MM-dd")
     private LocalDate returnDate;
 
     private boolean isActive = true;
