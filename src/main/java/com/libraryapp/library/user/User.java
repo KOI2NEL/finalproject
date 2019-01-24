@@ -3,7 +3,6 @@ package com.libraryapp.library.user;
 import com.libraryapp.library.borrow.Borrow;
 
 import javax.persistence.*;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 

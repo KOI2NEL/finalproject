@@ -1,12 +1,5 @@
 package com.libraryapp.library.author;
 
-import com.libraryapp.library.bookdata.BookDataDto;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 public class CreateAuthorDto {
 
     private String name;

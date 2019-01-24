@@ -1,8 +1,5 @@
 package com.libraryapp.library.bookdata;
 
-import com.libraryapp.library.author.Author;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class CreateBookDataDto {

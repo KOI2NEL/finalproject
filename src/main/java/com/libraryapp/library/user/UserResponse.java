@@ -1,9 +1,5 @@
 package com.libraryapp.library.user;
 
-import com.libraryapp.library.borrow.BorrowResponse;
-
-import java.util.List;
-
 public class UserResponse {
     private Long id;
 

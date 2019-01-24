@@ -1,7 +1,6 @@
 package com.libraryapp.library.borrow;
 
 import com.libraryapp.library.book.BookMapper;
-import com.libraryapp.library.book.BookResponse;
 import com.libraryapp.library.book.BookService;
 import com.libraryapp.library.user.UserResponse;
 import com.libraryapp.library.user.UserService;

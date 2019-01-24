@@ -1,11 +1,5 @@
 package com.libraryapp.library.book;
 
-import com.libraryapp.library.author.Author;
-import com.libraryapp.library.bookdata.BookDataDto;
-import com.libraryapp.library.user.User;
-
-import java.util.List;
-
 public class CreateBookDto {
 
     private Long bookDataId;
