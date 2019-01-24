@@ -20,7 +20,7 @@ public class BorrowController {
     @RequestMapping(value = "/all/", method = RequestMethod.GET)
     public ResponseEntity<List<BorrowResponse>> getAll() {
         List<BorrowResponse> borrowResponses = borrowService.getAllBorrows();
-        if (borrowResponses.isEmpty()) {
+        if (borrowResponses == null || borrowResponses.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(borrowResponses, HttpStatus.OK);
@@ -29,6 +29,18 @@ public class BorrowController {
     @RequestMapping(value = "/add/", method = RequestMethod.POST)
     public ResponseEntity<BorrowResponse> add(@RequestBody CreateBorrowDto createBorrowDto) {
         BorrowResponse borrowResponse = borrowService.addBorrow(createBorrowDto);
+
+        if (borrowResponse != null) {
+            return new ResponseEntity<>(borrowResponse, HttpStatus.CREATED);
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
+    @RequestMapping(value = "/returnBook/{borrowId}", method = RequestMethod.PUT)
+    public ResponseEntity<BorrowResponse> returnBook(@PathVariable("borrowId") Long borrowId) {
+
+
+        BorrowResponse borrowResponse = borrowService.returnBook(borrowId);
 
         if (borrowResponse != null) {
             return new ResponseEntity<>(borrowResponse, HttpStatus.CREATED);

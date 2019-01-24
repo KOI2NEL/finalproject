@@ -2,6 +2,7 @@ package com.libraryapp.library.borrow;
 
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,10 +19,16 @@ public class BorrowService {
 
 
     public List<BorrowResponse> getAllBorrows() {
-        return borrowRepository.findAll()
-                .stream()
-                .map(borrowMapper::map)
-                .collect(Collectors.toList());
+        try {
+            return borrowRepository.findAll()
+                    .stream()
+                    .map(borrowMapper::map)
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Borrow DB is empty");
+            return null;
+        }
     }
 
     public BorrowResponse addBorrow(CreateBorrowDto createBorrowDto) {
@@ -44,5 +51,21 @@ public class BorrowService {
     public BorrowResponse findResponseById(Long id) {
         Borrow borrow = findById(id);
         return borrowMapper.map(borrow);
+    }
+
+    public BorrowResponse returnBook(Long borrowId) {
+
+        try {
+            Borrow borrow = borrowRepository.findById(borrowId);
+
+            borrow.setActive(false);
+            borrow.setReturnDate(LocalDate.now());
+            borrowRepository.save(borrow);
+
+            return borrowMapper.map(borrow);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

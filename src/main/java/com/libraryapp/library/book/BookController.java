@@ -21,10 +21,10 @@ public class BookController {
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public ResponseEntity<List<BookResponse>> getAll() {
         List<BookResponse> bookResponses = bookService.getAllBooks();
-        if (bookResponses.isEmpty()) {
+        if (bookResponses == null || bookResponses.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<List<BookResponse>>(bookResponses, HttpStatus.OK);
+        return new ResponseEntity<>(bookResponses, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)

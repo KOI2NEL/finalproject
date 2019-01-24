@@ -2,6 +2,7 @@ package com.libraryapp.library.borrow;
 
 import com.libraryapp.library.book.BookResponse;
 import com.libraryapp.library.user.UserResponse;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
@@ -12,11 +13,14 @@ public class BorrowResponse {
 
     private BookResponse bookResponse;
 
-    private String borrowDate;
+    @DateTimeFormat(style = "yyyy-MM-dd")
+    private LocalDate borrowDate;
 
-    private String requiredReturnDate;
+    @DateTimeFormat(style = "yyyy-MM-dd")
+    private LocalDate requiredReturnDate;
 
-    private String returnDate;
+    @DateTimeFormat(style = "yyyy-MM-dd")
+    private LocalDate returnDate;
 
     private Double fine;
 
@@ -50,27 +54,27 @@ public class BorrowResponse {
         this.bookResponse = bookResponse;
     }
 
-    public String getBorrowDate() {
+    public LocalDate getBorrowDate() {
         return borrowDate;
     }
 
-    public void setBorrowDate(String borrowDate) {
+    public void setBorrowDate(LocalDate borrowDate) {
         this.borrowDate = borrowDate;
     }
 
-    public String getRequiredReturnDate() {
+    public LocalDate getRequiredReturnDate() {
         return requiredReturnDate;
     }
 
-    public void setRequiredReturnDate(String requiredReturnDate) {
+    public void setRequiredReturnDate(LocalDate requiredReturnDate) {
         this.requiredReturnDate = requiredReturnDate;
     }
 
-    public String getReturnDate() {
+    public LocalDate getReturnDate() {
         return returnDate;
     }
 
-    public void setReturnDate(String returnDate) {
+    public void setReturnDate(LocalDate returnDate) {
         this.returnDate = returnDate;
     }
 

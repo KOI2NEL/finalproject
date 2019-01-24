@@ -18,10 +18,16 @@ public class BookService {
     }
 
     public List<BookResponse> getAllBooks() {
-        return bookRepository.findAll()
-                .stream()
-                .map(bookMapper::map)
-                .collect(Collectors.toList());
+        try {
+            return bookRepository.findAll()
+                    .stream()
+                    .map(bookMapper::map)
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Book DB is empty");
+            return null;
+        }
     }
 
 
@@ -41,7 +47,7 @@ public class BookService {
         return bookRepository.findById(id);
     }
 
-    public BookResponse findResponseById (Long id){
+    public BookResponse findResponseById(Long id) {
         Book book = findById(id);
         return bookMapper.map(book);
     }
