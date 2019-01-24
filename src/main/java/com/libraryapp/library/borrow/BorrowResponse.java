@@ -12,25 +12,16 @@ public class BorrowResponse {
 
     private BookResponse bookResponse;
 
-    private LocalDate borrowDate;
+    private String borrowDate;
 
-    private LocalDate requiredReturnDate;
+    private String requiredReturnDate;
 
-    private LocalDate returnDate;
+    private String returnDate;
 
     private Double fine;
 
     private boolean isActive;
 
-    public BorrowResponse(Long id, UserResponse userResponse, BookResponse bookResponse, LocalDate borrowDate, LocalDate returnDate, Double fine, boolean isActive) {
-        this.id = id;
-        this.userResponse = userResponse;
-        this.bookResponse = bookResponse;
-        this.borrowDate = borrowDate;
-        this.returnDate = returnDate;
-        this.fine = fine;
-        this.isActive = isActive;
-    }
 
     public BorrowResponse() {
     }
@@ -39,63 +30,63 @@ public class BorrowResponse {
         return id;
     }
 
-    public UserResponse getUserResponse() {
-        return userResponse;
-    }
-
-    public BookResponse getBookResponse() {
-        return bookResponse;
-    }
-
-    public LocalDate getBorrowDate() {
-        return borrowDate;
-    }
-
-    public LocalDate getReturnDate() {
-        return returnDate;
-    }
-
-    public Double getFine() {
-        return fine;
-    }
-
-    public boolean isActive() {
-        return isActive;
-    }
-
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public UserResponse getUserResponse() {
+        return userResponse;
     }
 
     public void setUserResponse(UserResponse userResponse) {
         this.userResponse = userResponse;
     }
 
+    public BookResponse getBookResponse() {
+        return bookResponse;
+    }
+
     public void setBookResponse(BookResponse bookResponse) {
         this.bookResponse = bookResponse;
     }
 
-    public void setBorrowDate(LocalDate borrowDate) {
+    public String getBorrowDate() {
+        return borrowDate;
+    }
+
+    public void setBorrowDate(String borrowDate) {
         this.borrowDate = borrowDate;
     }
 
-    public void setReturnDate(LocalDate returnDate) {
+    public String getRequiredReturnDate() {
+        return requiredReturnDate;
+    }
+
+    public void setRequiredReturnDate(String requiredReturnDate) {
+        this.requiredReturnDate = requiredReturnDate;
+    }
+
+    public String getReturnDate() {
+        return returnDate;
+    }
+
+    public void setReturnDate(String returnDate) {
         this.returnDate = returnDate;
+    }
+
+    public Double getFine() {
+        return fine;
     }
 
     public void setFine(Double fine) {
         this.fine = fine;
     }
 
+    public boolean isActive() {
+        return isActive;
+    }
+
     public void setActive(boolean active) {
         isActive = active;
-    }
-
-    public LocalDate getRequiredReturnDate() {
-        return requiredReturnDate;
-    }
-
-    public void setRequiredReturnDate(LocalDate requiredReturnDate) {
-        this.requiredReturnDate = requiredReturnDate;
     }
 }

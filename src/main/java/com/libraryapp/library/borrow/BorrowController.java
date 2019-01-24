@@ -27,9 +27,13 @@ public class BorrowController {
     }
 
     @RequestMapping(value = "/add/", method = RequestMethod.POST)
-    public HttpStatus add(@RequestBody CreateBorrowDto createBorrowDto) {
-        borrowService.addBorrow(createBorrowDto);
-        return HttpStatus.CREATED;
+    public ResponseEntity<BorrowResponse> add(@RequestBody CreateBorrowDto createBorrowDto) {
+        BorrowResponse borrowResponse = borrowService.addBorrow(createBorrowDto);
+
+        if (borrowResponse != null) {
+            return new ResponseEntity<>(borrowResponse, HttpStatus.CREATED);
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)

@@ -34,14 +34,6 @@ public class Borrow {
     public Borrow() {
     }
 
-    public Borrow(User user, Book book, LocalDate borrowDate, LocalDate returnDate, Double fine, boolean isActive) {
-        this.user = user;
-        this.book = book;
-        this.borrowDate = borrowDate;
-        this.returnDate = returnDate;
-        this.fine = fine;
-        this.isActive = isActive;
-    }
 
     public LocalDate getRequiredReturnDate() {
         return requiredReturnDate;

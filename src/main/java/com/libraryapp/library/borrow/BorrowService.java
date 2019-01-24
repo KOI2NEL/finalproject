@@ -18,19 +18,30 @@ public class BorrowService {
 
 
     public List<BorrowResponse> getAllBorrows() {
-        return borrowRepository.findAll().stream().map(borrowMapper::map).collect(Collectors.toList());
+        return borrowRepository.findAll()
+                .stream()
+                .map(borrowMapper::map)
+                .collect(Collectors.toList());
     }
 
-    public void addBorrow(CreateBorrowDto createBorrowDto) {
-        borrowRepository.save(borrowMapper.createNew(createBorrowDto));
+    public BorrowResponse addBorrow(CreateBorrowDto createBorrowDto) {
+        Borrow borrow = borrowMapper.createNew(createBorrowDto);
+
+        try {
+            return borrowMapper.map(borrowRepository.save(borrow));
+        } catch (Exception e) {
+            System.out.println("Was not possible to save borrow to database");
+            e.printStackTrace();
+            return null;
+        }
     }
 
-    public Borrow findById(Long id){
+    public Borrow findById(Long id) {
         Borrow borrow = borrowRepository.findById(id);
         return borrow;
     }
 
-    public BorrowResponse findResponseById(Long id){
+    public BorrowResponse findResponseById(Long id) {
         Borrow borrow = findById(id);
         return borrowMapper.map(borrow);
     }

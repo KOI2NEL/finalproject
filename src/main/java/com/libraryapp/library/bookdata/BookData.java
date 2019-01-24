@@ -30,6 +30,11 @@ public class BookData {
     @OneToMany(mappedBy = "bookData", fetch = FetchType.EAGER)
     private Set<Book> books = new HashSet<>();
 
+    public BookData(String title, Set<Author> authors) {
+        this.title = title;
+        this.authors = authors;
+    }
+
     public BookData() {
     }
 

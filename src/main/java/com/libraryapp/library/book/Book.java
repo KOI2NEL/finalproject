@@ -27,10 +27,11 @@ public class Book {
     public Book() {
     }
 
-    public Book(Long id, BookData bookData, Set<Borrow> borrows) {
+    //TODO: POPRAWIC CONSTRUCTOR
+    public Book(Long id, BookData bookData) {
         this.id = id;
         this.bookData = bookData;
-        this.borrows = borrows;
+//        this.borrows = borrows;
     }
 
     public Long getId() {

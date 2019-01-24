@@ -23,8 +23,9 @@ public class BorrowMapper {
     public BorrowResponse map(Borrow borrowEntity) {
         BorrowResponse borrowResponse = new BorrowResponse();
         borrowResponse.setId(borrowEntity.getId());
-        borrowResponse.setBorrowDate(borrowEntity.getBorrowDate());
-        borrowResponse.setReturnDate(borrowEntity.getReturnDate());
+        borrowResponse.setBorrowDate(borrowEntity.getBorrowDate().toString());
+        borrowResponse.setReturnDate(borrowEntity.getReturnDate().toString());
+        borrowResponse.setRequiredReturnDate(borrowEntity.getRequiredReturnDate().toString());
         borrowResponse.setFine(borrowEntity.getFine());
         borrowResponse.setActive(borrowEntity.isActive());
 
@@ -38,6 +39,10 @@ public class BorrowMapper {
         Borrow borrow = new Borrow();
         borrow.setUser(userService.findById(borrowDto.getUserId()));
         borrow.setBook(bookService.findById(borrowDto.getBookId()));
+        borrow.setBorrowDate(borrowDto.getBorrowDate());
+        borrow.setRequiredReturnDate(borrowDto.getRequiredReturnDate());
+        borrow.setReturnDate(borrowDto.getRequiredReturnDate());
+        borrow.setActive(borrowDto.isActive());
         return borrow;
     }
 }

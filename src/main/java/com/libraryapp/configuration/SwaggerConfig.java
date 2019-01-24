@@ -1,12 +1,18 @@
 package com.libraryapp.configuration;
 
+import com.google.common.collect.Lists;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.service.ApiKey;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger.web.ApiKeyVehicle;
+import springfox.documentation.swagger.web.SecurityConfiguration;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+import java.util.Arrays;
 
 @EnableSwagger2
 @Configuration
@@ -18,7 +24,17 @@ public class SwaggerConfig {
                 .select()
                 .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())
-                .build();
+                .build()
+                .securitySchemes(Lists.newArrayList(apiKey()));
+    }
+
+    @Bean
+    SecurityConfiguration securityInfo(){
+        return new SecurityConfiguration(null, null, null, null,"", ApiKeyVehicle.HEADER,"Authorization","");
+    }
+
+    private ApiKey apiKey(){
+        return new ApiKey("Authorization","Authorization","header");
     }
 }
 

@@ -17,7 +17,16 @@ public class CreateBorrowDto {
 
     private LocalDate returnDate;
 
-    private boolean isActive;
+    private boolean isActive = true;
+
+    public CreateBorrowDto(Long userId, Long bookId, LocalDate borrowDate, LocalDate requiredReturnDate, LocalDate returnDate, boolean isActive) {
+        this.userId = userId;
+        this.bookId = bookId;
+        this.borrowDate = borrowDate;
+        this.requiredReturnDate = requiredReturnDate;
+        this.returnDate = returnDate;
+        this.isActive = isActive;
+    }
 
     public CreateBorrowDto(Long userId, Long bookId) {
         this.userId = userId;
