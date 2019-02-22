@@ -1,0 +1,12 @@
+.box {
+  float: left;
+}
+.boxfor {
+  float: left;
+  margin-right: 2px;
+}
+
+.comma{
+  float: left;
+  margin-right: 5px;
+}

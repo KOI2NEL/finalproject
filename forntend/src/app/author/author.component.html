@@ -1,0 +1,22 @@
+<app-create-author></app-create-author>
+<br>
+<div>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Surname</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let author of authors, let i = index">
+      <th scope="row">{{i}}</th>
+      <td>{{author.name}}</td>
+      <td>{{author.surname}}</td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
+

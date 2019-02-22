@@ -1,0 +1,29 @@
+<app-create-book-data></app-create-book-data>
+<br>
+<div>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">ID</th>
+      <th scope="col">Title</th>
+      <th scope="col">Authors</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let bookdata of bookdatas, let i = index">
+      <th scope="row">{{i}}</th>
+      <td>{{bookdata.id}}</td>
+      <td>{{bookdata.title}}</td>
+      <td>
+        <div class="boxfor" *ngFor="let authorResponse of bookdata.authorResponse, let j = index">
+          <div class="box">{{authorResponse.name}} {{authorResponse.surname}}</div>
+          <div class="comma" *ngIf="j<bookdata.authorResponse.length-1">,</div>
+        </div>
+
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
